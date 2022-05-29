@@ -23,11 +23,9 @@ app.get('/', (req, res) =>{
   res.render('index.ejs')
 }) 
 
-app.get('/list', (req, res) =>{
-  res.render('list/index.ejs')
+app.get('/teams', (req, res) =>{
+  res.render('teams.ejs')
 })
-
-
 
 //controllers
 app.use('/users', require('./controllers/users'))
