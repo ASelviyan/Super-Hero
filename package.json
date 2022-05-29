@@ -1,0 +1,33 @@
+{
+  "name": "super-hero",
+  "version": "1.0.0",
+  "description": "- My idea is to create a app that allows user to enter the app with a username and password  - The user will have a list of super_heros that they can look through or they can search up super heros through there search bar  - They can enter that heros details page and look at there details - The user can add a hero to there team  - They can also enter each super hero to add a comment about them and give advice to new user on if this super hero is worth having on there team",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ASelviyan/Super-Hero.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ASelviyan/Super-Hero/issues"
+  },
+  "homepage": "https://github.com/ASelviyan/Super-Hero#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "crypto-js": "^4.1.1",
+    "dotenv": "^16.0.1",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "pg": "^8.5.1",
+    "rowdy-logger": "^1.0.2",
+    "sequelize": "^6.5.0"
+  }
+}
