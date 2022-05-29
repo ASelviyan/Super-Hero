@@ -24,11 +24,14 @@ app.get('/', (req, res) =>{
 }) 
 
 app.get('/list', (req, res) =>{
-  res.render('/list/index.ejs')
+  res.render('list/index.ejs')
 })
+
+
 
 //controllers
 app.use('/users', require('./controllers/users'))
+app.use('/heroes', require('./controllers/heroes'))
 
 app.listen(PORT, () => {
     console.log("server is running on port 3000")
