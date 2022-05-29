@@ -21,6 +21,10 @@ app.use(express.urlencoded({ extended: false }))
 // home page 
 app.get('/', (req, res) =>{
   res.render('index.ejs')
+}) 
+
+app.get('/list', (req, res) =>{
+  res.render('/list/index.ejs')
 })
 
 //controllers
