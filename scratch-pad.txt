@@ -1,0 +1,24 @@
+model/table name: user
+
+email: VARCHAR 
+password:VARCHAR
+
+sequelize command for user
+sequelize model:create --name user --attributes email:string,password:string
+
+model/table name: team
+
+name: VARCHAR 
+userId:integer
+
+sequelize model:create --name team --attributes name:string,userId:integer
+
+model/table name: comment
+
+name: VARCHAR 
+comment: VARCHAR
+rating:integer
+teamId:integer
+userId:integer
+
+sequelize model:create --name comment --attributes name:string,comment:string,rating:integer,userId:integer,teamId:integer

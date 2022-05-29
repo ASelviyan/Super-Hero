@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
 
-//GET hero list
+//GET list of users 
 router.get('/', (req, res) =>{
-    res.render('list/index.ejs')
+    res.render('user/allUsers.ejs')
 })
 
 ///GET users/login 
