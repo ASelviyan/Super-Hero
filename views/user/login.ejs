@@ -1,11 +1,17 @@
+<% if(msg) { %>
+    <div>
+        <p><%= msg %></p>
+    </div>
+<%}%>
+
 <h2> Login ejs</h2>
 
-<form method="GET" action="/">
+<form method="POST" action="/users/login">
     <label for="email">Email:</label>
-    <input type="text" id="email" name="email">
+    <input type="text" id="email" name="email" placeholder="Enter your email" required >
 
     <label for="password">Password:</label>
-    <input type="text" id="password" name="passowrd">
+    <input type="password" id="password" name="password" placeholder="Enter your password" required>
 
     <button type="submit">Log in</button>
 </form>

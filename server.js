@@ -1,7 +1,10 @@
-require('dotenv').config
+require('dotenv').config()
+// required packages
 const express = require('express')
 const rowdy = require('rowdy-logger')
-// TODO: dont forget to add db once i make models 
+const cookieParser = require('cookie-parser')
+const db = require('./models')
+const cryptoJS = require('crypto-js') 
 
 
 //app config
@@ -16,7 +19,32 @@ const rowdyRes = rowdy.begin(app)
 app.use(require('express-ejs-layouts'))
 //note: it allows you to use the req.body and mostly needed for post and put
 app.use(express.urlencoded({ extended: false }))
+app.use(cookieParser())
 
+// DIY middleware
+// auth middleware
+app.use(async (req, res, next) => {
+  try {
+    // if there is a cookie -- 
+    if (req.cookies.userId) {
+      // try to find that user in the db
+      const userId = req.cookies.userId
+      const decryptedId = cryptoJS.AES.decrypt(userId, process.env.ENC_KEY).toString(cryptoJS.enc.Utf8)
+      const user = await db.user.findByPk(decryptedId)
+      // mount the found user on the res.locals so that later routes can access the logged in user
+      // any value on the res.locals is availible to the layout.ejs
+      res.locals.user = user
+    } else {
+      // the user is explicitly not logged in
+      res.locals.user = null
+    }
+  
+  } catch (err) {
+    console.log(err)
+  }finally{
+    next() //like a return 
+  }
+})
 
 // home page 
 app.get('/', (req, res) =>{
