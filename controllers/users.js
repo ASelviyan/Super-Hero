@@ -28,7 +28,10 @@ router.post('/signup', async(req,res) =>{
             //this will look if this user is already created if not then...
             where: {email: req.body.email},
             //add a new user with this hashed password 
-            defaults: {password: hashedPassword}
+            defaults: {
+                password: hashedPassword,
+                username: req.body.username
+            }
         })
 
         //if the user is new 
@@ -95,5 +98,13 @@ router.post('/login', async(req, res) =>{
         console.log(error)
     }
 })
+
+//GET users/allUsers
+router.get('/allUsers', async(req, res) =>{
+    const allUsers = await db.user.findAll()
+    console.log(allUsers[0].dataValues.username)
+    res.render('user/allUsers.ejs', {allUsers})
+})
+
 
 module.exports = router

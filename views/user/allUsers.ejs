@@ -1,1 +1,7 @@
 <h2>All users</h2>
+
+<ul>
+    <%allUsers.forEach(user => { %>
+        <li><%=user.dataValues.username%></li>
+    <%});%>
+</ul>
