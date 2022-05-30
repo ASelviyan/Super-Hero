@@ -1,1 +1,27 @@
-<h2>details page</h2>
+<h1>The Hero You Searched For <%=heroesData.name%></h1>
+<!-- TODO: destructer -->
+<img width=300 height=auto src="<%=heroesData.image.url%>" />
+
+<h4>Power States of this Hero</h4>
+<p>Intelligence: <%=heroesData.powerstats.intelligence%></p>
+<p>Strength: <%=heroesData.powerstats.strength%></p>
+<p>Speed: <%=heroesData.powerstats.speed%></p>
+<p>Durability: <%=heroesData.powerstats.durability%></p>
+<p>Power: <%=heroesData.powerstats.power%></p>
+<p>Combat: <%=heroesData.powerstats.combat%></p>
+
+
+<h4>Biography of this Hero</h4>
+<p>Full Name: <%=heroesData.biography['full-name']%></p>
+<p>Power: <%=heroesData.biography['place-of-birth']%></p>
+<p>Combat: <%=heroesData.biography['first-appearance']%></p>
+<p>Publisher: <%=heroesData.biography.publisher%></p>
+<p>Alignment: <%=heroesData.biography.alignment%></p>
+
+<h4>The Appearance of this Hero</h4>
+<p>Gender: <%=heroesData.appearance.gender%></p>
+<p>Height: <%=heroesData.appearance.height%></p>
+<p>Weight: <%=heroesData.appearance.weight%></p>
+<p>Eye Color: <%=heroesData.appearance['eye-color']%></p>
+<p>Hair Color: <%=heroesData.appearance['hair-color']%></p>
+
