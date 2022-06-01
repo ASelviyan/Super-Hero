@@ -3,5 +3,9 @@
 <ul>
     <%allUsers.forEach(user => { %>
         <li><%=user.dataValues.username%></li>
+        <form action="/users/blog" method="GET">
+          <input hidden type="text" name="name" value="<%=user.dataValues.username%>">
+          <button type="submit">Look at this Users Team</button>
+        </form>
     <%});%>
 </ul>

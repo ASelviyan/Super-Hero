@@ -112,6 +112,21 @@ router.get('/allUsers', async(req, res) =>{
 
 
 
+//GET users/blog -- render the a spacific users team 
+router.get('/blog', async(req,res) =>{
+    // console.log(req.query.name)
+    const foundUser = await db.user.findOne({
+        where: {username: req.query.name}
+    })
+    
+    const team = await db.hero.findAll({
+        where: {userId: foundUser.dataValues.id}
+    }) 
+    // console.log(team)
+    // console.log(foundUser.dataValues.username)
+    res.render('user/blog.ejs', {foundUser, team})
+})
+
 
 //GET /team -- render the team the user created 
 router.get('/team', async(req,res) =>{
