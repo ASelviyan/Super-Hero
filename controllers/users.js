@@ -3,6 +3,7 @@ const router = express.Router()
 const db = require('../models')
 const bcrypt = require('bcryptjs') 
 const cryptoJS = require('crypto-js')
+const { password } = require('pg/lib/defaults')
 
 
 //GET list of users 
@@ -127,7 +128,31 @@ router.post('/team', async(req, res) =>{
     res.redirect('/heroes/list')
 })
 
+//GET /user -- render a from with the users info and a input box with a new password entry
+router.get('/edit', async(req, res) => {
+    const currentUser = res.locals.user
+    res.render('user/edit.ejs', {currentUser})
+})
 
+router.put('/edit', async(req, res) =>{
+    const foundUser = await db.user.findOne({
+        where: {email: req.body.email}
+    })
+    console.log(foundUser)
+    
+    //this will protect your password by hashing your password and go through 12 rounds of salt
+        const hashedPassword = bcrypt.hashSync(req.body.password, 12)
+        await foundUser.set({
+            email: req.body.email,
+            password: hashedPassword,
+            username: req.body.username
+        })
+
+        await foundUser.save()
+
+    res.redirect('/heroes/list')
+
+})
 
 //DELETE /team -- delete a hero from team 
 router.delete('/team', async(req, res) =>{

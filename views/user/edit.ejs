@@ -1,6 +1,9 @@
 <form method="POST" action="/users/edit/?_method=PUT">
     <label for="email">Email:</label>
-    <input type="text" id="email" name="email" value="<%=currentUser%>" required >
+    <input type="text" id="email" name="email" value="<%=currentUser.email%>" required >
+
+     <label for="username">Username:</label>
+    <input type="text" id="username" name="username" value="<%=currentUser.username%>">
 
     <label for="password">Password:</label>
     <input type="password" id="password" name="password" placeholder="Enter your New password" required>
