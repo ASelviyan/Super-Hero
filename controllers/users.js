@@ -3,7 +3,6 @@ const router = express.Router()
 const db = require('../models')
 const bcrypt = require('bcryptjs') 
 const cryptoJS = require('crypto-js')
-const { password } = require('pg/lib/defaults')
 
 
 //GET list of users 
@@ -120,12 +119,46 @@ router.get('/blog', async(req,res) =>{
     })
     
     const team = await db.hero.findAll({
-        where: {userId: foundUser.dataValues.id}
+        where: {userId: foundUser.id}
     }) 
-    // console.log(team)
+
+    const comments = await db.comment.findAll()
+
+    // console.log(comments)
     // console.log(foundUser.dataValues.username)
-    res.render('user/blog.ejs', {foundUser, team})
+    res.render('user/blog.ejs', {foundUser, team, comments})
+
+   
 })
+
+router.post('/blog', async(req, res) =>{
+     await db.comment.create({
+        name: req.body.name,
+        comment: req.body.comment,
+        rating: req.body.rating,
+        userId: req.body.userId
+     })
+
+     res.redirect('/users/blog')
+
+}) 
+
+//DELETE users/blog -- delete a comment
+router.delete('/blog', async(req, res) =>{
+    
+})
+
+// //DELETE /team -- delete a hero from team 
+// router.delete('/team', async(req, res) =>{
+//     //find the spacific hero we are deleting from the hero table
+//     const foundHero = await db.hero.findOne({
+//         where: {name: req.body.name}
+//     })
+//     //wait till the hero is found and then delete it from the heros table 
+//     await foundHero.destroy()
+//     //re direct to the /users/team page 
+//     res.redirect('/team')
+// })
 
 
 //GET /team -- render the team the user created 

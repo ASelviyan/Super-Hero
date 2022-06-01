@@ -1,7 +1,35 @@
-<h1>blog</h1>
+<h1>BLOG</h1>
 <h4><%=foundUser.dataValues.username%></h4>
 <ul>
     <%team.forEach(hero => { %>
         <li><%=hero.name%></li>
     <%});%>
 </ul>
+
+<h3>Comments</h3>
+
+    <%comments.forEach(comment => { %>
+        <div>
+            <h4><%=comment.name%></h4>
+            <p>Comment: <%=comment.comment%></p>
+            <p>Rating: <%=comment.rating%></p>
+        </div>
+    <%});%>
+    
+
+<h2>Make a Comment</h2>
+<form action="/users/blog" method="post">
+    <label for="name">Username:</label>
+    <input id="name" type="text" name="name" >
+    
+     <label for="comment">Comment:</label>
+     <textarea id="comment" name="comment"></textarea>
+
+     <label for="rating">Rating:</label>
+     <input id="rating" name="rating" type="number" min="1" max="5">
+     <button type="submit">Submit</button>
+</form>
+
+ 
+
+        
