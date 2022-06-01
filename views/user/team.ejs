@@ -1,0 +1,11 @@
+<h1>Your Team</h1>
+<ul>
+    <%team.forEach((hero) => { %>
+        <li><%=hero.dataValues.name%></li>
+        <form method="POST" action="/users/team/?_method=DELETE">
+            <!-- We added a hidden input so that when we delete a spacific hero it will know which one we are selecting by the value and name of the input -->
+            <input hidden type="text" value="<%=hero.dataValues.name%>" name="name"/>
+            <button type="submit">DELETE</button>
+        </form> 
+    <% }); %>
+</ul>

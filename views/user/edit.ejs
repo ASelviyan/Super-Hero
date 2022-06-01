@@ -1,0 +1,9 @@
+<form method="POST" action="/users/edit/?_method=PUT">
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email" value="<%=currentUser%>" required >
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" placeholder="Enter your New password" required>
+
+    <button type="submit">Reset password</button>
+</form>

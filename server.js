@@ -5,6 +5,7 @@ const rowdy = require('rowdy-logger')
 const cookieParser = require('cookie-parser')
 const db = require('./models')
 const cryptoJS = require('crypto-js') 
+const methodOverride = require('method-override')
 
 
 //app config
@@ -20,6 +21,7 @@ app.use(require('express-ejs-layouts'))
 //note: it allows you to use the req.body and mostly needed for post and put
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
+app.use(methodOverride('_method'))
 
 // DIY middleware
 // auth middleware
@@ -68,6 +70,6 @@ app.use('/users', require('./controllers/users'))
 app.use('/heroes', require('./controllers/heroes'))
 
 app.listen(PORT, () => {
-    console.log("server is running on port 3000")
+    console.log("server is running on port 5000")
     rowdyRes.print()
 })

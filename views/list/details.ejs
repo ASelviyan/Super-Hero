@@ -13,8 +13,8 @@
 
 <h4>Biography of this Hero</h4>
 <p>Full Name: <%=heroesData.biography['full-name']%></p>
-<p>Power: <%=heroesData.biography['place-of-birth']%></p>
-<p>Combat: <%=heroesData.biography['first-appearance']%></p>
+<p>Place of Birth: <%=heroesData.biography['place-of-birth']%></p>
+<p>First Appearance: <%=heroesData.biography['first-appearance']%></p>
 <p>Publisher: <%=heroesData.biography.publisher%></p>
 <p>Alignment: <%=heroesData.biography.alignment%></p>
 
@@ -25,3 +25,8 @@
 <p>Eye Color: <%=heroesData.appearance['eye-color']%></p>
 <p>Hair Color: <%=heroesData.appearance['hair-color']%></p>
 
+<!-- made a button to add this spacific hero to the team -->
+<form action="/users/team" method="POST">
+    <input hidden type="text" name="name" value="<%=heroesData.name%>">
+    <button type="submit">Add Hero to Team</button>
+</form>
