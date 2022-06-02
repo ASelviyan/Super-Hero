@@ -100,6 +100,14 @@ router.post('/login', async(req, res) =>{
     }
 })
 
+//GET logout 
+router.get('/logout', async(req, res) =>{
+    //check if user is authorized 
+    res.clearCookie('userId')
+
+    res.redirect('/')
+})
+
 //GET users/allUsers
 router.get('/allUsers', async(req, res) =>{
     //get all the users from the table 
@@ -119,6 +127,8 @@ router.get('/blog', async(req,res) =>{
         where: {username: req.query.name}
     })
     
+    const currentUser = res.locals.user
+
     const team = await db.hero.findAll({
         where: {userId: foundUser.id}
     }) 
@@ -127,7 +137,7 @@ router.get('/blog', async(req,res) =>{
 
     // console.log(comments[0].comment.dataValues)
     // console.log(foundUser)
-    res.render('user/blog.ejs', {foundUser, team, comments})
+    res.render('user/blog.ejs', {foundUser, team, comments, currentUser})
 
     } catch (error) {
         console.log(error)
@@ -141,7 +151,7 @@ router.post('/blog', async(req, res) =>{
         username: req.body.username,
         comment: req.body.comment,
         rating: req.body.rating,
-        // userId: 4 ??????????????????
+        userId: req.body.id
         })
         // console.log(newComment)
 
@@ -156,20 +166,22 @@ router.post('/blog', async(req, res) =>{
 
 //DELETE users/blog -- delete a comment
 router.delete('/blog', async(req, res) =>{
-    
-})
+    try {
+            //find the comment that needs to be deleted
+    const foundComment = await db.comment.findOne({
+        where: {
+            id: req.body.id,
+        }
+    })
+    console.log('❤❤❤❤❤', foundComment)
+//wait till the comment is found and then delete it 
+await foundComment.destroy()
+res.redirect('back')
 
-// //DELETE /team -- delete a hero from team 
-// router.delete('/team', async(req, res) =>{
-//     //find the spacific hero we are deleting from the hero table
-//     const foundHero = await db.hero.findOne({
-//         where: {name: req.body.name}
-//     })
-//     //wait till the hero is found and then delete it from the heros table 
-//     await foundHero.destroy()
-//     //re direct to the /users/team page 
-//     res.redirect('/team')
-// })
+    } catch (error) {
+        console.log(error)
+    }
+})
 
 
 //GET /team -- render the team the user created 
@@ -182,19 +194,24 @@ router.get('/team', async(req,res) =>{
 
 //POST /team --when the button in the details page is pressed the POST will add it to the heros table 
 router.post('/team', async(req, res) =>{
+    try {
     const newHero = await db.hero.create(req.body)
     res.locals.user.addHero(newHero)
     res.redirect('/heroes/list')
+    } catch (error) {
+        console.log(error)
+    }
 })
 
 //GET /user -- render a from with the users info and a input box with a new password entry
-router.get('/edit', async(req, res) => {
+router.get('/editPassword', async(req, res) => {
     const currentUser = res.locals.user
-    res.render('user/edit.ejs', {currentUser})
+    res.render('user/editPassword.ejs', {currentUser})
 })
 
-router.put('/edit', async(req, res) =>{
-    const foundUser = await db.user.findOne({
+router.put('/editPassword', async(req, res) =>{
+    try {
+        const foundUser = await db.user.findOne({
         where: {email: req.body.email}
     })
     console.log(foundUser)
@@ -210,19 +227,26 @@ router.put('/edit', async(req, res) =>{
         await foundUser.save()
 
     res.redirect('/heroes/list')
-
+    } catch (error) {
+        console.log(error)
+    }
 })
 
 //DELETE /team -- delete a hero from team 
 router.delete('/team', async(req, res) =>{
-    //find the spacific hero we are deleting from the hero table
+    try {
+         //find the spacific hero we are deleting from the hero table
     const foundHero = await db.hero.findOne({
         where: {name: req.body.name}
     })
     //wait till the hero is found and then delete it from the heros table 
     await foundHero.destroy()
     //re direct to the /users/team page 
-    res.redirect('/team')
+    res.redirect('/users/team')
+    } catch (error) {
+        console.log(error)
+    }
+   
 })
 
 module.exports = router

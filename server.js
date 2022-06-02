@@ -59,13 +59,6 @@ app.get('/teams', (req, res) =>{
   res.render('teams.ejs')
 })
 
-
-//POST to /teams --create a spot in the table for the hero that needs t obe added 
-app.post('/teams', (req, res) => {
-  //if the add button gets pressed 
-  //then the hero is added to the teams table 
-})
-
 //controllers
 app.use('/users', require('./controllers/users'))
 app.use('/heroes', require('./controllers/heroes'))
