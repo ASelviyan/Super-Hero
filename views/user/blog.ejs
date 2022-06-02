@@ -7,7 +7,6 @@
 </ul>
 
 <h3>Comments</h3>
-
     <%comments.forEach(comment => { %>
         <div>
             <h4><%=comment.username%></h4>
@@ -19,8 +18,7 @@
 
 <h2>Make a Comment</h2>
 <form action="/users/blog" method="post">
-    <label for="username">Username:</label>
-    <input id="username" type="text" name="username" value="<%=foundUser.dataValues.username%>" required>
+    <input hidden id="username" type="text" name="username" value="<%=foundUser.dataValues.username%>" >
     
      <label for="comment">Comment:</label>
      <textarea id="comment" name="comment" required></textarea>

@@ -125,7 +125,7 @@ router.get('/blog', async(req,res) =>{
 
     const comments = await db.comment.findAll()
 
-    // console.log(comments)
+    // console.log(comments[0].comment.dataValues)
     // console.log(foundUser)
     res.render('user/blog.ejs', {foundUser, team, comments})
 
@@ -136,17 +136,7 @@ router.get('/blog', async(req,res) =>{
 
 router.post('/blog', async(req, res) =>{
     try {
-        const foundUser = await db.user.findOne({
-        where: {username: req.query.name}
-    })
-    
-    const team = await db.hero.findAll({
-        where: {userId: foundUser.id}
-    }) 
-
     const comments = await db.comment.findAll()
-
-
           await db.comment.create({
         username: req.body.username,
         comment: req.body.comment,
@@ -155,7 +145,7 @@ router.post('/blog', async(req, res) =>{
         })
         // console.log(newComment)
 
-     res.render('user/blog.ejs', {foundUser, team, comments})
+     res.redirect('back');
     } catch (error) {
         console.log(error)
     }

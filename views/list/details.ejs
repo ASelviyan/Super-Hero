@@ -1,32 +1,36 @@
-<h1>The Hero You Searched For <%=heroesData.name%></h1>
+<h1>The Hero You Searched For </h1>
 <!-- TODO: destructer -->
-<img width=300 height=auto src="<%=heroesData.image.url%>" />
-
+<% heroesData.forEach(hero => { %>
+     <p><%=hero.name%></p>
+    <img width=300 height=auto src="<%=hero.image.url%>" />
+    
 <h4>Power States of this Hero</h4>
-<p>Intelligence: <%=heroesData.powerstats.intelligence%></p>
-<p>Strength: <%=heroesData.powerstats.strength%></p>
-<p>Speed: <%=heroesData.powerstats.speed%></p>
-<p>Durability: <%=heroesData.powerstats.durability%></p>
-<p>Power: <%=heroesData.powerstats.power%></p>
-<p>Combat: <%=heroesData.powerstats.combat%></p>
+<p>Intelligence: <%=hero.powerstats.intelligence%></p>
+<p>Strength: <%=hero.powerstats.strength%></p>
+<p>Speed: <%=hero.powerstats.speed%></p>
+<p>Durability: <%=hero.powerstats.durability%></p>
+<p>Power: <%=hero.powerstats.power%></p>
+<p>Combat: <%=hero.powerstats.combat%></p>
 
 
 <h4>Biography of this Hero</h4>
-<p>Full Name: <%=heroesData.biography['full-name']%></p>
-<p>Place of Birth: <%=heroesData.biography['place-of-birth']%></p>
-<p>First Appearance: <%=heroesData.biography['first-appearance']%></p>
-<p>Publisher: <%=heroesData.biography.publisher%></p>
-<p>Alignment: <%=heroesData.biography.alignment%></p>
+<p>Full Name: <%=hero.biography['full-name']%></p>
+<p>Place of Birth: <%=hero.biography['place-of-birth']%></p>
+<p>First Appearance: <%=hero.biography['first-appearance']%></p>
+<p>Publisher: <%=hero.biography.publisher%></p>
+<p>Alignment: <%=hero.biography.alignment%></p>
 
 <h4>The Appearance of this Hero</h4>
-<p>Gender: <%=heroesData.appearance.gender%></p>
-<p>Height: <%=heroesData.appearance.height%></p>
-<p>Weight: <%=heroesData.appearance.weight%></p>
-<p>Eye Color: <%=heroesData.appearance['eye-color']%></p>
-<p>Hair Color: <%=heroesData.appearance['hair-color']%></p>
+<p>Gender: <%=hero.appearance.gender%></p>
+<p>Height: <%=hero.appearance.height%></p>
+<p>Weight: <%=hero.appearance.weight%></p>
+<p>Eye Color: <%=hero.appearance['eye-color']%></p>
+<p>Hair Color: <%=hero.appearance['hair-color']%></p>
 
 <!-- made a button to add this spacific hero to the team -->
 <form action="/users/team" method="POST">
-    <input hidden type="text" name="name" value="<%=heroesData.name%>">
+    <input hidden type="text" name="name" value="<%=hero.name%>">
     <button type="submit">Add Hero to Team</button>
 </form>
+<%});%>
+
