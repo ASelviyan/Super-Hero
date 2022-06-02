@@ -1,20 +1,33 @@
+<link rel="stylesheet" type="text/css" href="../css/style.css">
 <% if(msg) { %>
     <div>
         <p><%= msg %></p>
     </div>
 <%}%>
-
-<h2>signup page</h2>
-
+<div class="background">
+<div class=" container">
+    <div class='d-flex flex-column myFlexContainer justify-content-center align-items-center' >
+        <div class="text-center interface">
+<h2 class="mb-0">Sign Up!</h2>
+<p>------------------------------------------------</p>
 <form method="POST" action="/users/signup">
-    <label for="email">Email:</label>
-    <input type="text" id="email" name="email" placeholder="Enter your email">
+    <div class="d-flex mb-2 justify-content-center align-items-center">
+    <input type="text" id="email" name="email" placeholder="Enter Email">
+    </div>
 
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" placeholder="Enter your username">
+    <div class="d-flex mb-2 justify-content-center align-items-center">
+    <input type="text" id="username" name="username" placeholder="Enter Username">
+    </div>
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" placeholder="Enter a password">
+    <div class="d-flex mb-2 justify-content-center align-items-center">
+    <input type="password" id="password" name="password" placeholder="Enter Password">
+    </div>   
 
-    <button type="submit">Sign up</button>
+    <div class="d-flex mb-2 justify-content-center align-items-center">
+    <button type="submit" class="button btn btn-primary">Sign up</button>
+    </div>
 </form>
+</div>
+</div>
+</div>
+</div>

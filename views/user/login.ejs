@@ -1,17 +1,30 @@
+<link rel="stylesheet" type="text/css" href="../css/style.css">
 <% if(msg) { %>
     <div>
         <p><%= msg %></p>
     </div>
 <%}%>
+<div class="background">
 
-<h2> Login ejs</h2>
-
+<div class=" container">
+     <div class='d-flex flex-column myFlexContainer justify-content-center align-items-center' >
+        <div class="text-center interface">
+        <h3 class="mb-0">Log In!</h3> 
+        <p>-----------------------------------------</p> 
 <form method="POST" action="/users/login">
-    <label for="email">Email:</label>
-    <input type="text" id="email" name="email" placeholder="Enter your email" required >
+    <div class="d-flex mb-2 justify-content-center align-items-center">
+    <input type="text" id="email" name="email" placeholder="Enter Email" class="form-control"required >
+    </div>
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+    <div class="d-flex mb-2 justify-content-center align-items-center">
+    <input type="password" id="password" name="password" placeholder="Enter Password" class="form-control" required>
+    </div>
 
-    <button type="submit">Log in</button>
+    <div class="d-flex justify-content-center align-items-center ">
+    <button type="submit" class="button btn btn-primary">Log in</button>
+    </div>
 </form>
+</div>
+   </div>
+</div>
+</div>

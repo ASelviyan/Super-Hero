@@ -10,7 +10,7 @@
 
     <%comments.forEach(comment => { %>
         <div>
-            <h4><%=comment.name%></h4>
+            <h4><%=comment.username%></h4>
             <p>Comment: <%=comment.comment%></p>
             <p>Rating: <%=comment.rating%></p>
         </div>
@@ -19,14 +19,16 @@
 
 <h2>Make a Comment</h2>
 <form action="/users/blog" method="post">
-    <label for="name">Username:</label>
-    <input id="name" type="text" name="name" >
+    <label for="username">Username:</label>
+    <input id="username" type="text" name="username" value="<%=foundUser.dataValues.username%>" required>
     
      <label for="comment">Comment:</label>
-     <textarea id="comment" name="comment"></textarea>
+     <textarea id="comment" name="comment" required></textarea>
 
      <label for="rating">Rating:</label>
-     <input id="rating" name="rating" type="number" min="1" max="5">
+     <input id="rating" name="rating" type="number" min="1" max="5" required>
+
+
      <button type="submit">Submit</button>
 </form>
 

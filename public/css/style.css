@@ -1,0 +1,37 @@
+.myFlexContainer {
+    height: 80vh;
+}
+
+.interface{
+    width: 250px;
+    height: 260px;
+    border: 2px solid black;
+    padding: 20px 40px;
+    border-radius: 10%;
+}
+
+.indexPageBackground{
+    background-color: rgb(124, 255, 255);
+}
+
+.background{
+    background-image: url('https://media.istockphoto.com/vectors/comic-page-bright-concept-vector-id1134933683?k=20&m=1134933683&s=612x612&w=0&h=0taK7O7R6JLH09TTmfSHizpdhP-BNh6ruXvzQBAxeqI=');
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}
+
+.button:hover{
+    background-color: red;
+}
+
+body{
+    font-family: 'International Super Hero', sans-serif;
+}
+
+.backgroundMainPage{
+    background-image: url('https://static.vecteezy.com/system/resources/previews/002/208/140/original/cartoon-comic-halftone-background-free-vector.jpg');
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}

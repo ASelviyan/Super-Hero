@@ -113,7 +113,8 @@ router.get('/allUsers', async(req, res) =>{
 
 //GET users/blog -- render the a spacific users team 
 router.get('/blog', async(req,res) =>{
-    // console.log(req.query.name)
+    try {
+        // console.log(req.query.name)
     const foundUser = await db.user.findOne({
         where: {username: req.query.name}
     })
@@ -125,21 +126,41 @@ router.get('/blog', async(req,res) =>{
     const comments = await db.comment.findAll()
 
     // console.log(comments)
-    // console.log(foundUser.dataValues.username)
+    // console.log(foundUser)
     res.render('user/blog.ejs', {foundUser, team, comments})
 
-   
+    } catch (error) {
+        console.log(error)
+    }
 })
 
 router.post('/blog', async(req, res) =>{
-     await db.comment.create({
-        name: req.body.name,
+    try {
+        const foundUser = await db.user.findOne({
+        where: {username: req.query.name}
+    })
+    
+    const team = await db.hero.findAll({
+        where: {userId: foundUser.id}
+    }) 
+
+    const comments = await db.comment.findAll()
+
+
+          await db.comment.create({
+        username: req.body.username,
         comment: req.body.comment,
         rating: req.body.rating,
-        userId: req.body.userId
-     })
+        // userId: 4 ??????????????????
+        })
+        // console.log(newComment)
 
-     res.redirect('/users/blog')
+     res.render('user/blog.ejs', {foundUser, team, comments})
+    } catch (error) {
+        console.log(error)
+    }
+    
+     
 
 }) 
 
