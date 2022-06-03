@@ -120,23 +120,25 @@ router.get('/allUsers', async(req, res) =>{
 
 
 //GET users/blog -- render the a spacific users team 
-router.get('/blog', async(req,res) =>{
+router.get('/blog/:id', async(req,res) =>{
     try {
         // console.log(req.query.name)
     const foundUser = await db.user.findOne({
-        where: {username: req.query.name}
+        where: {id: req.query.id}
     })
     
     const currentUser = res.locals.user
+    // console.log('❤❤❤',res.locals.user)
 
     const team = await db.hero.findAll({
         where: {userId: foundUser.id}
     }) 
 
     const comments = await db.comment.findAll()
+    
 
     // console.log(comments[0].comment.dataValues)
-    // console.log(foundUser)
+    console.log(foundUser.dataValues.id)
     res.render('user/blog.ejs', {foundUser, team, comments, currentUser})
 
     } catch (error) {
@@ -144,15 +146,29 @@ router.get('/blog', async(req,res) =>{
     }
 })
 
-router.post('/blog', async(req, res) =>{
+
+//This adds comment to the team
+router.post('/blog/:id', async(req, res) =>{
     try {
     const comments = await db.comment.findAll()
-          await db.comment.create({
+
+
+         const newComment = await db.comment.create({
         username: req.body.username,
         comment: req.body.comment,
-        rating: req.body.rating,
-        userId: req.body.id
+        rating: req.body.rating
         })
+
+        const findTeam = await db.hero.findOne({
+            where: {userId: req.params.id}
+        })
+
+        const currentUser = await db.user.findOne({
+            where:{id: res.locals.user.id}
+        })
+        
+        await currentUser.addComment(newComment)
+        await findTeam.addComment(newComment)
         // console.log(newComment)
 
      res.redirect('back');
@@ -164,6 +180,47 @@ router.post('/blog', async(req, res) =>{
 
 }) 
 
+//GET users/comment
+router.get('/comment/:id', async(req, res) =>{
+    const currentComment = await db.comment.findOne({
+        where: {id: req.params.id}
+    })
+    // console.log(currentComment.id)
+    res.render('user/editComment.ejs', {currentComment})
+})
+
+//PUT users/comment
+router.put('/comment/:id', async(req, res) =>{
+    try {
+         const currentComment = await db.comment.findOne({
+        where: {id: req.params.id}
+    })
+
+
+     const foundteam = await db.hero.findOne({
+         where: {id: currentComment.heroId}
+     })
+
+     console.log(foundteam)
+
+     
+
+     await currentComment.set({
+            comment: req.body.comment,
+            rating: req.body.rating,
+        })
+        
+
+         await currentComment.save()
+
+         res.redirect(`/users/blog/${foundteam.userId}?id=${foundteam.userId}`)
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+
+
 //DELETE users/blog -- delete a comment
 router.delete('/blog', async(req, res) =>{
     try {
@@ -173,7 +230,7 @@ router.delete('/blog', async(req, res) =>{
             id: req.body.id,
         }
     })
-    console.log('❤❤❤❤❤', foundComment)
+    // console.log('❤❤❤❤❤', foundComment)
 //wait till the comment is found and then delete it 
 await foundComment.destroy()
 res.redirect('back')
@@ -202,6 +259,10 @@ router.post('/team', async(req, res) =>{
         console.log(error)
     }
 })
+
+
+
+
 
 //GET /user -- render a from with the users info and a input box with a new password entry
 router.get('/editPassword', async(req, res) => {

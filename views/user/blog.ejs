@@ -1,3 +1,6 @@
+
+
+
 <h1>BLOG</h1>
 <h4><%=foundUser.dataValues.username%></h4>
 <ul>
@@ -13,17 +16,23 @@
             <p>Comment: <%=comment.comment%></p>
             <p>Rating: <%=comment.rating%></p>
         
-        <form method="POST" action="/users/blog/?_method=DELETE">
+            <%if(currentUser.id === foundUser.dataValues.id){ %>
+                  
+                <a href="/users/comment/<%=comment.id%>" class=" btn btn-primary">Edit</a> 
+
+                  <form method="POST" action="/users/blog/?_method=DELETE">
             <!-- We added a hidden input so that when we delete a spacific thing it will know which one we are selecting by the value and name of the input -->
             <input hidden type="number" value="<%=comment.id%>" name="id"/>
             <button type="submit">DELETE</button>
         </form> 
         </div>
+            <%}%>
+      
     <%});%>
     
 
 <h2>Make a Comment</h2>
-<form action="/users/blog" method="post">
+<form action="/users/blog/<%=foundUser.dataValues.id%>" method="post">
     <input hidden type="text" name="username" value="<%=currentUser.username%>" >
     
      <label for="comment">Comment:</label>
@@ -32,7 +41,6 @@
      <label for="rating">Rating:</label>
      <input id="rating" name="rating" type="number" min="1" max="5" required>
 
-     <input hidden type="text" name="id" value="<%=foundUser.dataValues.id%>" >
      <button type="submit">Submit</button>
 </form>
 

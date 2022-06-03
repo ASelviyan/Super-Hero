@@ -1,0 +1,12 @@
+<form action="/users/comment/<%=currentComment.id%>/?_method=PUT" method="post">
+    <input hidden type="text" name="username" value="<%=currentComment.username%>" >
+    
+     <label for="comment">Comment:</label>
+     <textarea id="comment" name="comment" required><%=currentComment.comment%></textarea>
+
+     <label for="rating">Rating:</label>
+     <input id="rating" name="rating" type="number" min="1" max="5" value="<%=currentComment.rating%>" required>
+
+     <input hidden type="text" name="id" value="<%=currentComment.username%>"%>" >
+     <button type="submit">Submit</button>
+</form>
