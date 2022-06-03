@@ -1,28 +1,30 @@
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
     
-    <div class="backgroundMainPage">
+    <div class="backgroundMainPage text-center">
+        <br />
+        <div class="d-flex flex-column justify-content-center mx-auto w-75">
+            <div class="navBar py-2 mx-4 w-50 d-flex justify-content-evenly mx-auto w-75">
 
-        <nav>
+                <% if (user) { %>
+                <!-- if the user is logged in -->
+                
+                <a href="/users/profile" class="btn btn-primary button">Profile</a>
+                <a href="/users/logout" class="btn btn-primary button">Logout</a>
+                <a href="/users/allUsers" class="btn btn-primary button">Blog</a>
+                <a href="/users/team" class="button btn btn-primary">Your Team</a>
+            
+            </div>
+        </div>
 
-            <% if (user) { %>
-            <!-- if the user is logged in -->
-            <!-- <li>
-            <a href="/users/profile">Profile</a>
-            </li> -->
-        
-      
-             <a href="/users/logout">Logout</a>
-        
-
-            <h2>Hero List</h2>
+<div class="my-5 search mx-auto">
+     <h1>Hero List</h1>
             <form method="GET" action="/heroes/list/details">
-                <label for="search">Search</label>
                 <input id="search" type="text" placeholder="Search for Hero Here" name="name" />
                 <input type="submit" />
             </form>
       <% } %>
- 
-    </nav>
-    </div>
+      
+    
+    
 
 

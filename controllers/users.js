@@ -134,7 +134,11 @@ router.get('/blog/:id', async(req,res) =>{
         where: {userId: foundUser.id}
     }) 
 
-    const comments = await db.comment.findAll()
+    // console.log('🤍❤❤❤',team[0])
+ 
+    const comments = await db.comment.findAll({
+        where: {heroId: team[0].id}
+    })
     
 
     // console.log(comments[0].comment.dataValues)
@@ -293,6 +297,8 @@ router.put('/editPassword', async(req, res) =>{
     }
 })
 
+
+//---------------------------------------------------------------------------------------
 //DELETE /team -- delete a hero from team 
 router.delete('/team', async(req, res) =>{
     try {

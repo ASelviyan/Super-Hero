@@ -35,3 +35,15 @@ body{
     background-size: cover;
     height: 100vh;
 }
+
+.navBar{
+    background-color: white;
+    border-radius:10px;
+    
+}
+
+.search{
+    width: 200px
+
+}
+
