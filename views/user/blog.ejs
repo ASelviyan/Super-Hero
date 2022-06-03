@@ -16,7 +16,7 @@
             <p>Comment: <%=comment.comment%></p>
             <p>Rating: <%=comment.rating%></p>
         
-            <%if(currentUser.id === foundUser.dataValues.id){ %>
+            <%if(currentUser.id === comment.userId){ %>
                   
                 <a href="/users/comment/<%=comment.id%>" class=" btn btn-primary">Edit</a> 
 
@@ -43,6 +43,8 @@
 
      <button type="submit">Submit</button>
 </form>
+
+<a href="/users/allUsers" >Back</a>
 
  
 

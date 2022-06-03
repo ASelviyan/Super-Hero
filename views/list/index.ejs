@@ -1,30 +1,34 @@
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
-    
-    <div class="backgroundMainPage text-center">
-        <br />
-        <div class="d-flex flex-column justify-content-center mx-auto w-75">
-            <div class="navBar py-2 mx-4 w-50 d-flex justify-content-evenly mx-auto w-75">
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
 
-                <% if (user) { %>
-                <!-- if the user is logged in -->
-                
-                <a href="/users/profile" class="btn btn-primary button">Profile</a>
-                <a href="/users/logout" class="btn btn-primary button">Logout</a>
-                <a href="/users/allUsers" class="btn btn-primary button">Blog</a>
-                <a href="/users/team" class="button btn btn-primary">Your Team</a>
-            
-            </div>
-        </div>
+<div class="backgroundMainPage text-center">
+  <br />
+  <div class="d-flex flex-column justify-content-center mx-auto w-75">
+    <div
+      class="navBar py-2 mx-4 w-50 d-flex justify-content-evenly mx-auto w-75"
+    >
+      <% if (user) { %>
+      <!-- if the user is logged in -->
 
-<div class="my-5 search mx-auto">
-     <h1>Hero List</h1>
-            <form method="GET" action="/heroes/list/details">
-                <input id="search" type="text" placeholder="Search for Hero Here" name="name" />
-                <input type="submit" />
-            </form>
-      <% } %>
-      
-    
-    
+      <a href="/users/allUsers" class="btn btn-primary button">Blog</a>
+      <a href="/users/team" class="button btn btn-primary">Your Team</a>
+      <a href="/users/profile" class="btn btn-primary button">Profile</a>
+      <a href="/users/logout" class="btn btn-primary button">Logout</a>
+    </div>
+  </div>
 
-
+  <div class="my-5 search mx-auto">
+    <h1>Hero List</h1>
+    <form method="GET" action="/heroes/list/details">
+      <input
+        id="search"
+        type="text"
+        placeholder="Search for Hero Here"
+        name="name"
+      />
+      <input type="submit" />
+    </form>
+    <%if(msg) { %>
+    <p><%=msg%></p>
+    <%}%> <% } %>
+  </div>
+</div>

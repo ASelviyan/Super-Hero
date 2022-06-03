@@ -20,7 +20,7 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER
       },
-      heroId: {
+      teamId: {
         type: Sequelize.INTEGER
       },
       createdAt: {

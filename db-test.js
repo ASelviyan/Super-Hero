@@ -6,8 +6,10 @@ const hi = async() => {
         name: 'ASelviyan',
         comment: 'hi',
         rating: 1,
-        userId: 4
+        userId: 1,
+        teamId: 1
     })
 }
+
 
 hi()
