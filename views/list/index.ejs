@@ -3,30 +3,32 @@
 <div class="backgroundMainPage text-center">
   <br />
   <div class="d-flex flex-column justify-content-center mx-auto w-75">
+    <h1 class="title">MEET A HERO</h1>
     <div
-      class="navBar py-2 mx-4 w-50 d-flex justify-content-evenly mx-auto w-75"
+      class="navBar py-2 mx-4 w-50 d-flex justify-content-sm-evenly mx-auto w-50"
     >
       <% if (user) { %>
       <!-- if the user is logged in -->
 
-      <a href="/users/allUsers" class="btn btn-primary button">Blog</a>
-      <a href="/users/team" class="button btn btn-primary">Your Team</a>
-      <a href="/users/profile" class="btn btn-primary button">Profile</a>
-      <a href="/users/logout" class="btn btn-primary button">Logout</a>
+      <a href="/users/allUsers" class="btn btn-primary navButton">Community</a>
+      <a href="/users/team" class="navButton btn btn-primary">Your Team</a>
+      <a href="/users/profile" class="btn btn-primary navButton">Profile</a>
+      <a href="/users/logout" class="btn btn-primary navButton">Logout</a>
     </div>
   </div>
 
-  <div class="my-5 search mx-auto">
-    <h1 class="heroList">Hero List</h1>
-    <form method="GET" action="/heroes/list/details">
-      <input
-        id="search"
-        type="text"
-        placeholder="Search for Hero Here"
-        name="name"
-      />
-      <input type="submit" />
-    </form>
+  <div class="my-5 searchDiv mx-auto">
+    <h1 class="searchTitle">Search For A Hero</h1>
+    <div class="justify-content-center align-center d-flex">
+      <form method="GET" action="/heroes/list/details">
+        <input class="searchBar" id="search" type="text" name="name" />
+
+        <input
+          type="submit"
+          class="btn btn-primary searchButton align-text-center"
+        />
+      </form>
+    </div>
     <%if(msg) { %>
     <p><%=msg%></p>
     <%}%> <% } %>

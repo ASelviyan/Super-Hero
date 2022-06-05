@@ -1,12 +1,35 @@
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<div class="backgroundMainPage text-center">
+
+      <div class="d-flex ">
+    <div class=" flex-shrink-1">
+      <a href="/users/blog/<%=currentComment.userId%>" class="fs-4 ">Back</a>
+    </div>
+    <div class="p-2 w-100 ">
+      <h1 class="title">Edit your Comment</h1>
+    </div>
+  </div>
+
+  <div class="whiteBackground ">
+<div class="d-flex flex-column justify-content-center p-4">
 <form action="/users/comment/<%=currentComment.id%>/?_method=PUT" method="post">
     <input hidden type="text" name="username" value="<%=currentComment.username%>" >
     
-     <label for="comment">Comment:</label>
-     <textarea id="comment" name="comment" required><%=currentComment.comment%></textarea>
+    <div class="d-flex justify-content-center align-items-center ">
+        <div class="m-2 d-flex justify-content-center align-items-center">
+            <label for="comment" class="m-2">Comment:</label>
+            <textarea id="comment" name="comment" required><%=currentComment.comment%></textarea>
+        </div>
 
-     <label for="rating">Rating:</label>
-     <input id="rating" name="rating" type="number" min="1" max="5" value="<%=currentComment.rating%>" required>
+        <div class="m-2 d-flex justify-content-center align-items-center">
+            <label for="rating" class="m-2">Rating:</label>
+            <input id="rating" name="rating" type="number" min="1" max="5" value="<%=currentComment.rating%>" required>
+        </div>
+    </div>
 
      <input hidden type="text" name="id" value="<%=currentComment.username%>"%>" >
-     <button type="submit">Submit</button>
+     <button type="submit" class="btn btn-primary button m-0" >Submit</button>
 </form>
+</div>
+</div>

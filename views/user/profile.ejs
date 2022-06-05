@@ -1,6 +1,21 @@
-<h1>Profile</h1>
-<p>Email: <%=currentUser.email%></p>
-<p>Username: <%=currentUser.username%></p>
-<p>Password: ****************</p>
-<a href="/users/editPassword">Change Password</a>
-<a href="/heroes/list">Back</a>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+
+<div class="backgroundMainPage text-center">
+<div class="d-flex">
+   <div class=" flex-shrink-1">
+        <a href="/heroes/list" class="fs-4 ">Back</a>
+   </div>
+   <div class="p-2 w-100 ">
+        <h1 class="title">Profile</h1>
+    </div>
+</div>
+
+ <div class="whiteBackground">
+<div class="d-flex flex-column justify-content-center p-4">
+<p class="text">Email: <%=currentUser.email%></p>
+<p class="text">Username: <%=currentUser.username%></p>
+<p class="text">Password: ****************</p>
+<a href="/users/editPassword" class="btn btn-primary button">Change Password</a>
+</div>
+</div>
+</div>

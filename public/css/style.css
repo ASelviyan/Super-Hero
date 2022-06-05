@@ -41,10 +41,79 @@ body {
   border-radius: 10px;
 }
 
-.search {
-  width: 300px;
+.searchDiv {
+  width: 500px;
 }
 
-.heroList {
-  font-size: 70px;
+.searchTitle {
+  font-size: 50px;
+  color: white;
+}
+
+.searchBar {
+  height: 30px;
+  font-size: 20px;
+}
+
+.searchButton {
+  padding: 0.15rem 1rem;
+}
+.searchButton:hover {
+  background-color: red;
+}
+
+.title {
+  color: white;
+  font-size: 4rem;
+}
+
+.navButton {
+  padding: 0.2rem 1rem;
+}
+
+.navButton:hover {
+  background-color: red;
+}
+
+.whiteBackground{
+  background-color: rgba(255, 255, 255, .5);
+  margin: 0rem 30rem;
+  position:relative;
+  border-radius: 1rem;
+
+}
+
+.whiteBackgroundDetails{
+   background-color: rgba(255, 255, 255, .5);
+  position:relative;
+  border-radius: 1rem;
+}
+
+
+.text{
+  font-size: 1.7rem;
+  margin: 0;
+}
+
+.teamButton{
+  padding: .25rem;
+  font-size: .75rem;
+}
+
+.teamButton:hover{
+  background-color: red;
+}
+.commentName{
+  border: 3px double yellow
+
+}
+.commentsMain{
+  border: 3px double blue;
+}
+
+.backgroundDetails{
+   background-image: url("https://static.vecteezy.com/system/resources/previews/002/208/140/original/cartoon-comic-halftone-background-free-vector.jpg");
+   background-size: contain;
+  background-repeat: repeat;
+
 }

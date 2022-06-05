@@ -1,11 +1,25 @@
-<h1>Your Team</h1>
-<ul>
-    <%team.forEach((hero) => { %>
-        <li><%=hero.dataValues.name%></li>
-        <form method="POST" action="/users/team/?_method=DELETE">
-            <!-- We added a hidden input so that when we delete a spacific hero it will know which one we are selecting by the value and name of the input -->
-            <input hidden type="text" value="<%=hero.dataValues.name%>" name="name"/>
-            <button type="submit">DELETE</button>
-        </form> 
-    <% }); %>
-</ul>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+
+<div class="backgroundMainPage text-center">
+  <div class="d-flex ">
+    <div class=" flex-shrink-1">
+      <a href="/heroes/list" class="fs-4 ">Back</a>
+    </div>
+    <div class="p-2 w-100 ">
+      <h1 class="title">Your Hero </h1>
+    </div>
+  </div>
+
+  <div class="whiteBackground">
+<div class="d-flex flex-column justify-content-center p-4">
+  <%team.forEach((hero) => { %> 
+    <p class="text"><%=hero.dataValues.name%></p>
+    <form method="POST" action="/users/team/?_method=DELETE">
+    <!-- We added a hidden input so that when we delete a spacific hero it will know which one we are selecting by the value and name of the input -->
+    <input hidden type="text" value="<%=hero.dataValues.name%>" name="name" />
+    <button type="submit" class="btn btn-primary teamButton">DELETE</button>
+  </form>
+  <% }); %>
+  </div>
+  </div>
+</div>

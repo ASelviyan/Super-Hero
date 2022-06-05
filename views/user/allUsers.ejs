@@ -1,11 +1,26 @@
-<h2>All users</h2>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
 
-<ul>
+  <div class="backgroundMainPage text-center">
+  <div class="d-flex ">
+    <div class=" flex-shrink-1">
+      <a href="/heroes/list" class="fs-4 ">Back</a>
+    </div>
+    <div class="p-2 w-100 ">
+<h1 class="title">Community</h1>
+<p class="text-white">Show off your team & Look at other peoples team</p>
+</div>
+</div>
+
+<div class="whiteBackground">
+<div class="d-flex flex-column justify-content-center p-4">
     <%allUsers.forEach(user => { %>
-        <li><%=user.dataValues.username%></li>
+       <p class="text"><%=user.dataValues.username%></p>
         <form action="/users/blog/<%=user.dataValues.id%>" method="GET">
           <input hidden type="number" name="id" value="<%=user.dataValues.id%>">
-          <button type="submit">Look at this Users Team</button>
+          <button type="submit" class="btn btn-primary teamButton">Look at Team</button>
         </form>
     <%});%>
-</ul>
+     </div>
+  </div>
+  </div>
+ 
