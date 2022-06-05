@@ -1,25 +1,32 @@
 # Super_Hero Read Me
 ## Project Idea and Decription
 - My idea is to create a app that allows user to enter the app with a username and password 
-- The user will have a list of super_heros that they can look through or they can search up super heros through there search bar 
+- The user will have a list of super_heros that they can search up by using the search bar 
 - They can enter that heros details page and look at there details
 - The user can add a hero to there team 
-- They can also enter each super hero to add a comment about them and give advice to new user on if this super hero is worth having on there team 
+- They can also enter a community page where they can look at other users teams and comment on them
 
 ## API
 - https://gasei.gitbook.io/sei/11-projects/project-2 
 
-## ERDs
-![ERD](img/erd.png)
+## LINK TO SITE 
+https://super-hero-website.herokuapp.com/
 
-## Restful Routing Chart
-![CHART](img/routingChart.png)
+
+
 
 ## Wireframe
 ![Wireframe](img/wireframesFrontPage.png)
 ![Wireframe](img/wireframeList.png)
 ![Wireframe](img/wireframesTeams.png)
 ![Wireframe](img/wireframesDetails.png)
+
+## ERDs
+![ERD](img/erd.png)
+
+## Restful Routing Chart
+![CHART](img/Capture.PNG)
+![CHART](img/Capture1.PNG)
 
 ## User Stories
 - As a user, I want to login so that i can look at the heros
