@@ -10,16 +10,24 @@
 - https://gasei.gitbook.io/sei/11-projects/project-2 
 
 ## LINK TO SITE 
-https://super-hero-website.herokuapp.com/
+- https://super-hero-website.herokuapp.com/
 
 
 
 
 ## Wireframe
-![Wireframe](img/wireframesFrontPage.png)
-![Wireframe](img/wireframeList.png)
-![Wireframe](img/wireframesTeams.png)
-![Wireframe](img/wireframesDetails.png)
+![Wireframe](img/Capture2.PNG)
+![Wireframe](img/Capture3.PNG)
+![Wireframe](img/Capture4.PNG)
+![Wireframe](img/Capture5.PNG)
+![Wireframe](img/Capture6.PNG)
+![Wireframe](img/Capture7.PNG)
+![Wireframe](img/Capture8.PNG)
+![Wireframe](img/Capture9.PNG)
+![Wireframe](img/Capture10.PNG)
+![Wireframe](img/Capture11.PNG)
+![Wireframe](img/Capture12.PNG)
+
 
 ## ERDs
 ![ERD](img/erd.png)
@@ -33,13 +41,12 @@ https://super-hero-website.herokuapp.com/
 - As a user, I want sign up so that i can create an account
 - As a user, I want to press on a spacific hero so that i can look at the details about that hero
 - As a user, I want press on a the My teams button so that i can look at my teams 
-- As a user, I want to press on the add button(forgot to add in the frame work) in the details page so that i can add it to my team
-- As a user, I want to press on the list of heros button to look at all the heros 
+- As a user, I want to press on the add button in the details page so that i can add it to my team
 - As a user, I want be able to search for a spacific hero so that i can find the hero i want
 - As a user, I want to press on the logout button so that i can log out
 - As a user, I want to press hte delete button in the teams page to remove a hero from the team so that i can edit my team
 
-## MVP goals
+## Completed
 - login: 
 - logout
 - sign up: create new user 
@@ -47,10 +54,7 @@ https://super-hero-website.herokuapp.com/
 - update a comment  
 - delete a comment 
 - look at a details page
-- add a list of heros through an API with name and img
-
-
-## Stretch Goals
+- add a list of heros through an API with name 
 - create a team
 - add to team
 - delete from team 
@@ -58,6 +62,11 @@ https://super-hero-website.herokuapp.com/
 - look at your team 
 - search for a spacific hero 
 - post the team you made to a blog tab
+
+## Stretch Goals For The Future
+- instead of the heros being all pasted in a details i want to have the heros be rendered on the search page with name and image and a details button 
+- make the deatils page less clustered looking  
+- make the comments better functionaly and visually
 
 
 
