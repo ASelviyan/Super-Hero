@@ -9,14 +9,14 @@ router.get("/", (req, res) => {
   res.render("user/allUsers.ejs");
 });
 
-//GET users/signup
-router.get("/signup", (req, res) => {
-  //render the signup page
-  res.render("user/signup.ejs", { msg: null });
+//GET users/new
+router.get("/new", (req, res) => {
+  //render the new page which is the sign up page
+  res.render("user/new.ejs", { msg: null });
 });
 
-//POST user/signup -- create a new user
-router.post("/signup", async (req, res) => {
+//POST user/new -- create a new user
+router.post("/new", async (req, res) => {
   try {
     //this will protect your password by hashing your password and go through 12 rounds of salt
     const hashedPassword = bcrypt.hashSync(req.body.password, 12);
@@ -49,8 +49,8 @@ router.post("/signup", async (req, res) => {
       //if the user already exists or was not created...
     } else {
       //then re render the sing up page with a alert saying that the user already exits
-      //in sign up page rpint the msg
-      res.render("user/signup.ejs", {
+      //in sign up page print the msg
+      res.render("user/new.ejs", {
         msg: "email exists in database already 🤦‍♂️",
       });
     }

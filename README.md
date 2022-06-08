@@ -13,6 +13,14 @@
 - https://super-hero-website.herokuapp.com/
 
 
+## Installation Instructions
+- Fork and Clone
+- npm i to install all the packages
+- Install Postgres
+- Create a database named "super_hero_app"
+- Then run the sequelize db:migrate command in the terminal
+- run nodemon
+- Go to your web browser and open up localhost:5000
 
 
 ## Wireframe
