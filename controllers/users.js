@@ -44,7 +44,7 @@ router.post("/new", async (req, res) => {
       //create a cookie for the user
       res.cookie("userId", encryptedId);
       //render the list page
-      res.redirect("/heroes/list");
+      res.redirect("/heroes");
 
       //if the user already exists or was not created...
     } else {
@@ -93,7 +93,7 @@ router.post("/login", async (req, res) => {
       console.log(encryptedId);
       res.cookie("userId", encryptedId);
       //render to the list page
-      res.redirect("/heroes/list");
+      res.redirect("/heroes");
     } else {
       //if the password did not match then render the login page with a message
       res.render("user/login.ejs", { msg });
@@ -179,6 +179,24 @@ router.post("/blog/:id", async (req, res) => {
   }
 });
 
+//DELETE users/blog -- delete a comment
+router.delete("/blog", async (req, res) => {
+  try {
+    //find the comment that needs to be deleted
+    const foundComment = await db.comment.findOne({
+      where: {
+        id: req.body.id,
+      },
+    });
+    // console.log('❤❤❤❤❤', foundComment)
+    //wait till the comment is found and then delete it
+    await foundComment.destroy();
+    res.redirect("back");
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 //GET users/comment
 router.get("/comment/:id", async (req, res) => {
   const currentComment = await db.comment.findOne({
@@ -213,23 +231,6 @@ router.put("/comment/:id", async (req, res) => {
   }
 });
 
-//DELETE users/blog -- delete a comment
-router.delete("/blog", async (req, res) => {
-  try {
-    //find the comment that needs to be deleted
-    const foundComment = await db.comment.findOne({
-      where: {
-        id: req.body.id,
-      },
-    });
-    // console.log('❤❤❤❤❤', foundComment)
-    //wait till the comment is found and then delete it
-    await foundComment.destroy();
-    res.redirect("back");
-  } catch (error) {
-    console.log(error);
-  }
-});
 
 //GET /users/profile -- render the profile page 
 router.get("/profile", async (req, res) => {
@@ -243,18 +244,18 @@ router.get("/profile", async (req, res) => {
   console.log(res.locals.user);
 });
 
-//POST /team --when the button in the details page is pressed the POST will add it to the heros table
+//POST /profile --when the button in the details page is pressed the POST will add it to the heros table
 router.post("/profile", async (req, res) => {
   try {
     const newHero = await db.hero.create(req.body);
     res.locals.user.addHero(newHero);
-    res.redirect("/heroes/list");
+    res.redirect("/heroes");
   } catch (error) {
     console.log(error);
   }
 });
 
-//DELETE /team -- delete a hero from team
+//DELETE /profile -- delete a hero from team
 router.delete("/profile", async (req, res) => {
   try {
     //find the spacific hero we are deleting from the hero table
@@ -294,7 +295,7 @@ router.put("/editPassword", async (req, res) => {
 
     await foundUser.save();
 
-    res.redirect("/heroes/list");
+    res.redirect("/heroes");
   } catch (error) {
     console.log(error);
   }
