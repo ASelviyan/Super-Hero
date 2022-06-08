@@ -262,7 +262,7 @@ router.post("/profile", async (req, res) => {
     console.log(error);
   }
 });
-
+ 
 //GET /user -- render a from with the users info and a input box with a new password entry
 router.get("/editPassword", async (req, res) => {
   const currentUser = res.locals.user;
@@ -294,7 +294,7 @@ router.put("/editPassword", async (req, res) => {
 
 //---------------------------------------------------------------------------------------
 //DELETE /team -- delete a hero from team
-router.delete("/team", async (req, res) => {
+router.delete("/profile", async (req, res) => {
   try {
     //find the spacific hero we are deleting from the hero table
     const foundHero = await db.hero.findOne({
@@ -303,7 +303,7 @@ router.delete("/team", async (req, res) => {
     //wait till the hero is found and then delete it from the heros table
     await foundHero.destroy();
     //re direct to the /users/team page
-    res.redirect("/users/team");
+    res.redirect("/users/profile");
   } catch (error) {
     console.log(error);
   }
