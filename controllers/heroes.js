@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
 
 
 
-router.get('/list/details', async (req, res) =>{
+router.get('/details', async (req, res) =>{
     try {
       let heroURL = `https://superheroapi.com/api/${process.env.API_KEY}/search/${req.query.name}`
       const heroesData = await axios.get(heroURL)
