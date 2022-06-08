@@ -233,16 +233,27 @@ router.delete("/blog", async (req, res) => {
 });
 
 //GET /team -- render the team the user created
-router.get("/team", async (req, res) => {
+// router.get("/team", async (req, res) => {
+ 
+//   // console.log(team[0].dataValues)
+//   res.render("user/team.ejs", { team });
+// });
+
+
+//GET /users/profile -- render the profile page 
+router.get("/profile", async (req, res) => {
   const team = await db.hero.findAll({
     where: { userId: res.locals.user.id },
   });
-  // console.log(team[0].dataValues)
-  res.render("user/team.ejs", { team });
+  
+  const currentUser = res.locals.user;
+  
+  res.render("user/profile.ejs", { currentUser, team });
+  console.log(res.locals.user);
 });
 
 //POST /team --when the button in the details page is pressed the POST will add it to the heros table
-router.post("/team", async (req, res) => {
+router.post("/profile", async (req, res) => {
   try {
     const newHero = await db.hero.create(req.body);
     res.locals.user.addHero(newHero);
@@ -298,11 +309,5 @@ router.delete("/team", async (req, res) => {
   }
 });
 
-router.get("/profile", async (req, res) => {
-  const currentUser = res.locals.user;
-
-  res.render("user/profile.ejs", { currentUser });
-  console.log(res.locals.user);
-});
 
 module.exports = router;

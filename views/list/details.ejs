@@ -1,60 +1,77 @@
 <link rel="stylesheet" type="text/css" href="/css/style.css" />
 
 <div class="backgroundDetails text-center">
-  <div class="d-flex ">
-    <div class=" flex-shrink-1">
-      <a href="/heroes/list" class="fs-4 ">Back</a>
-    </div>
-    <div class=" w-100 ">
-      <h1 class="title">The Hero You Searched For</h1>
-    </div>
-  </div>
-
-<!-- TODO: destructer -->
-<% heroesData.forEach(hero => { %>
-    <p class="fs-2 m-0 text-white"><%=hero.name%></p>
-    <img width=250 height=auto src="<%=hero.image.url%>" />
-  
-<div class="d-flex justify-content-center w-70 my-2">
-    <div class="whiteBackgroundDetails mx-4">
-        <div class="d-flex flex-column justify-content-center m-0">
-            <h4 class="p-3">Power States of this Hero</h4>
-            <p>Intelligence: <%=hero.powerstats.intelligence%></p>
-            <p>Strength: <%=hero.powerstats.strength%></p>
-            <p>Speed: <%=hero.powerstats.speed%></p>
-            <p>Durability: <%=hero.powerstats.durability%></p>
-            <p>Power: <%=hero.powerstats.power%></p>
-            <p>Combat: <%=hero.powerstats.combat%></p>
+    <div class="d-flex ">
+        <div class=" flex-shrink-1">
+            <a href="/heroes/list" class="fs-4 ">Back</a>
+        </div>
+        <div class=" w-100 ">
+            <h1 class="title">The Hero You Searched For</h1>
         </div>
     </div>
 
+    <!-- TODO: destructer -->
+    <% heroesData.forEach(hero=> { %>
+        <p class="fs-2 m-0 text-white">
+            <%=hero.name%>
+        </p>
+        <img width=250 height=auto src="<%=hero.image.url%>" />
 
-    <div class="whiteBackgroundDetails mx-4">
-        <div class="d-flex flex-column justify-content-center p-4">
-            <h4>Biography of this Hero</h4>
-            <p>Full Name: <%=hero.biography['full-name']%></p>
-            <p>Place of Birth: <%=hero.biography['place-of-birth']%></p>
-            <p>First Appearance: <%=hero.biography['first-appearance']%></p>
-            <p>Publisher: <%=hero.biography.publisher%></p>
-            <p>Alignment: <%=hero.biography.alignment%></p>
+        <div class="d-flex justify-content-center w-70 my-2">
+            <div class="whiteBackgroundDetails mx-4">
+                <div class="d-flex flex-column justify-content-center m-0">
+                    <h4 class="p-3">Power States of this Hero</h4>
+                    <p>Intelligence: <%=hero.powerstats.intelligence%>
+                    </p>
+                    <p>Strength: <%=hero.powerstats.strength%>
+                    </p>
+                    <p>Speed: <%=hero.powerstats.speed%>
+                    </p>
+                    <p>Durability: <%=hero.powerstats.durability%>
+                    </p>
+                    <p>Power: <%=hero.powerstats.power%>
+                    </p>
+                    <p>Combat: <%=hero.powerstats.combat%>
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="whiteBackgroundDetails mx-4">
+                <div class="d-flex flex-column justify-content-center p-4">
+                    <h4>Biography of this Hero</h4>
+                    <p>Full Name: <%=hero.biography['full-name']%>
+                    </p>
+                    <p>Place of Birth: <%=hero.biography['place-of-birth']%>
+                    </p>
+                    <p>First Appearance: <%=hero.biography['first-appearance']%>
+                    </p>
+                    <p>Publisher: <%=hero.biography.publisher%>
+                    </p>
+                    <p>Alignment: <%=hero.biography.alignment%>
+                    </p>
+                </div>
+            </div>
+
+            <div class="whiteBackgroundDetails mx-4 ">
+                <div class="d-flex flex-column justify-content-center p-4">
+                    <h4>The Appearance of this Hero</h4>
+                    <p>Gender: <%=hero.appearance.gender%>
+                    </p>
+                    <p>Height: <%=hero.appearance.height%>
+                    </p>
+                    <p>Weight: <%=hero.appearance.weight%>
+                    </p>
+                    <p>Eye Color: <%=hero.appearance['eye-color']%>
+                    </p>
+                    <p>Hair Color: <%=hero.appearance['hair-color']%>
+                    </p>
+                </div>
+            </div>
         </div>
-    </div>
-
-    <div class="whiteBackgroundDetails mx-4 ">
-        <div class="d-flex flex-column justify-content-center p-4">
-            <h4>The Appearance of this Hero</h4>
-            <p>Gender: <%=hero.appearance.gender%></p>
-            <p>Height: <%=hero.appearance.height%></p>
-            <p>Weight: <%=hero.appearance.weight%></p>
-            <p>Eye Color: <%=hero.appearance['eye-color']%></p>
-            <p>Hair Color: <%=hero.appearance['hair-color']%></p>
-        </div>
-    </div>
-</div>
-<!-- made a button to add this spacific hero to the team -->
-<form action="/users/team" method="POST">
-    <input hidden type="text" name="name" value="<%=hero.name%>">
-    <button type="submit" class="btn btn-primary button m-0">Add Hero to Team</button>
-</form>
-<%});%>
-
+        <!-- made a button to add this spacific hero to the team -->
+        <form action="/users/profile" method="POST">
+            <input hidden type="text" name="name" value="<%=hero.name%>">
+            <button type="submit" class="btn btn-primary button m-0">Add Hero to Team</button>
+        </form>
+        <%});%>

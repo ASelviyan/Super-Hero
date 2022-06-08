@@ -1,21 +1,44 @@
 <link rel="stylesheet" type="text/css" href="../css/style.css" />
 
 <div class="backgroundMainPage text-center">
-<div class="d-flex">
-   <div class=" flex-shrink-1">
-        <a href="/heroes/list" class="fs-4 ">Back</a>
-   </div>
-   <div class="p-2 w-100 ">
-        <h1 class="title">Profile</h1>
-    </div>
-</div>
+     <div class="d-flex">
+          <div class=" flex-shrink-1">
+               <a href="/heroes/list" class="fs-4 ">Back</a>
+          </div>
+          <div class="p-2 w-100 ">
+               <h1 class="title">Profile</h1>
+          </div>
+     </div>
 
- <div class="whiteBackground">
-<div class="d-flex flex-column justify-content-center p-4">
-<p class="text">Email: <%=currentUser.email%></p>
-<p class="text">Username: <%=currentUser.username%></p>
-<p class="text">Password: ****************</p>
-<a href="/users/editPassword" class="btn btn-primary button">Change Password</a>
-</div>
+     <div class="whiteBackground">
+          <div class="d-flex flex-column justify-content-center p-4">
+               <p class="text">Email: <%=currentUser.email%>
+               </p>
+               <p class="text">Username: <%=currentUser.username%>
+               </p>
+               <p class="text">Password: ****************</p>
+               <a href="/users/editPassword" class="btn btn-primary button">Change Password</a>
+          </div>
+     </div>
+
+     <div class="p-2 w-100 ">
+          <h1 class="title">Your Heroes </h1>
+     </div>
+
+
+     <div class="whiteBackground">
+          <div class="d-flex flex-column justify-content-center p-4">
+               <%team.forEach((hero)=> { %>
+                    <p class="text">
+                         <%=hero.dataValues.name%>
+                    </p>
+                    <form method="POST" action="/users/profile/?_method=DELETE">
+                         <!-- We added a hidden input so that when we delete a spacific hero it will know which one we are selecting by the value and name of the input -->
+                         <input hidden type="text" value="<%=hero.dataValues.name%>" name="name" />
+                         <button type="submit" class="btn btn-primary teamButton">DELETE</button>
+                    </form>
+                    <% }); %>
+          </div>
+     </div>
 </div>
 </div>
