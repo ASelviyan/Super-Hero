@@ -6,7 +6,7 @@ const cryptoJS = require("crypto-js");
 
 //GET list of users
 router.get("/", (req, res) => {
-  res.render("user/allUsers.ejs");
+  res.render("user/teams.ejs");
 });
 
 //GET users/new
@@ -111,13 +111,12 @@ router.get("/logout", async (req, res) => {
   res.redirect("/");
 });
 
-//GET users/allUsers
-router.get("/allUsers", async (req, res) => {
+//GET users/teams
+router.get("/teams", async (req, res) => {
   //get all the users from the table
   const allUsers = await db.user.findAll();
-  // console.log(allUsers[0].dataValues.username)
-  //and render the allUsers page
-  res.render("user/allUsers.ejs", { allUsers });
+  //and render the teams page
+  res.render("user/teams.ejs", { allUsers });
 });
 
 //GET users/blog/:id -- render the a spacific users team why using there id
@@ -232,14 +231,6 @@ router.delete("/blog", async (req, res) => {
   }
 });
 
-//GET /team -- render the team the user created
-// router.get("/team", async (req, res) => {
- 
-//   // console.log(team[0].dataValues)
-//   res.render("user/team.ejs", { team });
-// });
-
-
 //GET /users/profile -- render the profile page 
 router.get("/profile", async (req, res) => {
   const team = await db.hero.findAll({
@@ -262,13 +253,30 @@ router.post("/profile", async (req, res) => {
     console.log(error);
   }
 });
- 
-//GET /user -- render a from with the users info and a input box with a new password entry
+
+//DELETE /team -- delete a hero from team
+router.delete("/profile", async (req, res) => {
+  try {
+    //find the spacific hero we are deleting from the hero table
+    const foundHero = await db.hero.findOne({
+      where: { name: req.body.name },
+    });
+    //wait till the hero is found and then delete it from the heros table
+    await foundHero.destroy();
+    //re direct to the /users/team page
+    res.redirect("/users/profile");
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+//GET /user/editPassword -- render a from with the users info and a input box with a new password entry
 router.get("/editPassword", async (req, res) => {
   const currentUser = res.locals.user;
   res.render("user/editPassword.ejs", { currentUser });
 });
 
+//put /user/editPassword --edit the awpssword 
 router.put("/editPassword", async (req, res) => {
   try {
     const foundUser = await db.user.findOne({
@@ -293,21 +301,6 @@ router.put("/editPassword", async (req, res) => {
 });
 
 //---------------------------------------------------------------------------------------
-//DELETE /team -- delete a hero from team
-router.delete("/profile", async (req, res) => {
-  try {
-    //find the spacific hero we are deleting from the hero table
-    const foundHero = await db.hero.findOne({
-      where: { name: req.body.name },
-    });
-    //wait till the hero is found and then delete it from the heros table
-    await foundHero.destroy();
-    //re direct to the /users/team page
-    res.redirect("/users/profile");
-  } catch (error) {
-    console.log(error);
-  }
-});
 
 
 module.exports = router;

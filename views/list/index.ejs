@@ -4,16 +4,14 @@
   <br />
   <div class="d-flex flex-column justify-content-center mx-auto w-75">
     <h1 class="title">MEET A HERO</h1>
-    <div
-      class="navBar py-2 mx-4 w-50 d-flex justify-content-sm-evenly mx-auto w-50"
-    >
+    <div class="navBar py-2 mx-4 w-50 d-flex justify-content-sm-evenly mx-auto w-50">
       <% if (user) { %>
-      <!-- if the user is logged in -->
+        <!-- if the user is logged in -->
 
-      <a href="/users/allUsers" class="btn btn-primary navButton">Community</a>
-      <a href="/users/team" class="navButton btn btn-primary">Your Team</a>
-      <a href="/users/profile" class="btn btn-primary navButton">Profile</a>
-      <a href="/users/logout" class="btn btn-primary navButton">Logout</a>
+        <a href="/users/teams" class="btn btn-primary navButton">Community</a>
+        <a href="/users/team" class="navButton btn btn-primary">Your Team</a>
+        <a href="/users/profile" class="btn btn-primary navButton">Profile</a>
+        <a href="/users/logout" class="btn btn-primary navButton">Logout</a>
     </div>
   </div>
 
@@ -23,14 +21,14 @@
       <form method="GET" action="/heroes/list/details">
         <input class="searchBar" id="search" type="text" name="name" />
 
-        <input
-          type="submit"
-          class="btn btn-primary searchButton align-text-center"
-        />
+        <input type="submit" class="btn btn-primary searchButton align-text-center" />
       </form>
     </div>
     <%if(msg) { %>
-    <p><%=msg%></p>
-    <%}%> <% } %>
+      <p>
+        <%=msg%>
+      </p>
+      <%}%>
+        <% } %>
   </div>
 </div>
